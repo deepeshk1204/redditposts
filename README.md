@@ -18,8 +18,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
 ### Flow
-once subreddit is selected post data gets stored in store
-so next time it doesn't makes a api call it fetches form store.
+once subreddit is selected post data gets stored in redux store
+so next time it doesn't makes an api call to fetches form store.
 
 
 
