@@ -1,0 +1,23 @@
+.postlist {
+    margin-top: 74px;
+    .subredditDropdown {
+      margin:2em 1em 1em 4em;
+      select {
+        width: 80%;
+      }
+    }
+  }
+
+  .searchContainer {
+    margin: auto;
+    margin-bottom: 1em;
+    width: 80%;
+    input {
+      width: 60%;
+      margin: 0 5px 0 5px;
+    }
+    button {
+      text-align: center;
+      margin: 0 5px 0 5px;
+    }
+  }
