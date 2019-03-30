@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {getdataByPage, searchdata} from '../api'
 import './table.scss'
 
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 class Table extends Component {
 
     constructor(props){
@@ -9,9 +11,9 @@ class Table extends Component {
         this.state = {
             tabledata:[],
             columns: [],
-            selected: [],
             totalpage: 0
         }
+        this.selected= [];
         this.setRef = React.createRef();
         this.pageClicked = this.pageClicked.bind(this);
         this.searchData = this.searchData.bind(this);
@@ -20,11 +22,11 @@ class Table extends Component {
 
 
     updateSelected = (row) => {
-        debugger
-        console.log(row)
-        console.log(this.state.selected.push(row))
-        console.log(this.state.selected)
 
+        console.log(row)
+        this.selected.push(row)
+        this.props.saveSelected(this.selected)
+        // this.setState({selected: this.state.selected})
         // this.setState({selected: this.state.selected.push(row)})
     }
 
@@ -61,10 +63,10 @@ class Table extends Component {
         }
 
     render() {
-
         const dataColumns = this.state.columns;
         const dataRows = this.state.tabledata || [];
         const paginator = []
+        const selected = this.selected.length;
         for(var i =0; i< this.state.totalpage; i++){
             paginator.push(<option key={i} className='page'>{i+1}</option>)
         }
@@ -90,11 +92,20 @@ class Table extends Component {
           </td>
             {dataColumns.map(function(column) {
               return <td> {row[column]}</td>; })}
-          </tr>); }) || 'No DATA';
+          </tr>); });
+
+        var  multiselectSection = (selected) => {
+            if(selected > 1){
+                return (<div>multi operation</div>)
+            } else {
+                return ''
+            }
+        }
 
         return (
             <div className='tableContainer'>
             {searchbar}
+            {multiselectSection}
             <table href="#popup1">
             {tableHeaders}
             <tbody>
@@ -111,4 +122,11 @@ class Table extends Component {
     }
 }
 
-export default Table;
+const mapStateToProps = (state) => {
+    return {
+        selected: state.selected,
+    }
+}
+
+
+export default connect(mapStateToProps,actions)(Table);

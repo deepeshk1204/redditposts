@@ -1,4 +1,4 @@
-import { SAVE_SEARCH, GET_SEARCH, SAVE_POST, GET_POST, LATEST_SEARCH } from './types';
+import { SAVE_SEARCH, GET_SEARCH, SAVE_POST, GET_POST, LATEST_SEARCH,SAVE_SELECTED } from './types';
 
 export function saveSearch(searchterm) {
   return {
@@ -32,4 +32,11 @@ export function getPostByKey(key) {
       type: GET_POST,
       payload: key
   }
+}
+
+export function saveSelected(rows) {
+return{
+  type: SAVE_SELECTED,
+  selected: rows
+}
 }

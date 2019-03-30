@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './Root';
 import './index.css';
-import App from './container/App';
-import Table from './container/Table';
+import DataTable from './container/DataTable';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 ReactDOM.render(
   <Root>
     <Router>
-      <Route path="/" component={Table} />
+      <Route path="/" component={DataTable} />
     </Router>
   </Root>,
     document.getElementById('root')
