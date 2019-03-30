@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from './Root';
 import './index.css';
 import App from './container/App';
+import Table from './container/Table';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -11,7 +12,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 ReactDOM.render(
   <Root>
     <Router>
-      <Route path="/" component={App} />
+      <Route path="/" component={Table} />
     </Router>
   </Root>,
     document.getElementById('root')
